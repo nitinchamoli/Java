@@ -1,0 +1,22 @@
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+class Test
+{
+    private Test()
+    {
+        System.out.println("Test");
+    }
+}
+
+public class PrivateConstructor{
+
+     public static void main(String []args) throws ClassNotFoundException, InstantiationException,IllegalAccessException,InvocationTargetException{
+        //Test test = new Test();
+        Class c = Class.forName("Test");
+        //Test test =(Test) c.newInstance();
+        Constructor con[] = c.getDeclaredConstructors();
+        con[0].setAccessible(true);
+        con[0].newInstance();
+        
+     }
+}
